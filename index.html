@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>iPhone Scientific Calculator</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+<div class="app">
+
+<header class="display">
+    <div id="expression" class="expression"></div>
+    <div id="result" class="result">0</div>
+</header>
+
+<section class="controls">
+
+<div class="row small">
+<button id="ac">AC</button>
+<button id="ce">CE</button>
+<button id="back">⌫</button>
+<button id="settingsBtn">⚙</button>
+</div>
+
+<div class="row small">
+<button class="func">sin</button>
+<button class="func">cos</button>
+<button class="func">tan</button>
+<button id="degRad">DEG</button>
+</div>
+
+<div class="row small">
+<button class="func">log</button>
+<button class="func">ln</button>
+<button class="func">√</button>
+<button id="fracBtn">FRAC</button>
+</div>
+
+<div class="row">
+<button>(</button>
+<button>)</button>
+<button>π</button>
+<button>e</button>
+</div>
+
+<div class="row">
+<button>7</button>
+<button>8</button>
+<button>9</button>
+<button class="op">÷</button>
+</div>
+
+<div class="row">
+<button>4</button>
+<button>5</button>
+<button>6</button>
+<button class="op">×</button>
+</div>
+
+<div class="row">
+<button>1</button>
+<button>2</button>
+<button>3</button>
+<button class="op">-</button>
+</div>
+
+<div class="row">
+<button>0</button>
+<button>.</button>
+<button class="op">%</button>
+<button class="op">+</button>
+</div>
+
+<div class="row">
+<button id="equals" class="equals">=</button>
+</div>
+
+</section>
+
+<section id="history" class="history"></section>
+
+<div id="drawer" class="drawer">
+<h3>Settings</h3>
+
+<label>Angle Mode
+<select id="angleMode">
+<option value="DEG">DEG</option>
+<option value="RAD">RAD</option>
+</select>
+</label>
+
+<label>Fraction Mode
+<input type="checkbox" id="fractionMode">
+</label>
+
+<label>Max Denominator
+<select id="maxDen">
+<option>2</option>
+<option>4</option>
+<option>8</option>
+<option selected>16</option>
+<option>32</option>
+<option>64</option>
+<option>128</option>
+</select>
+</label>
+
+<label>Trade Rounding
+<input type="checkbox" id="tradeMode">
+</label>
+
+<label>Step
+<select id="tradeStep">
+<option>1/2</option>
+<option>1/4</option>
+<option>1/8</option>
+<option selected>1/16</option>
+<option>1/32</option>
+</select>
+</label>
+
+<label>Decimal Precision
+<input type="number" id="precision" min="2" max="10" value="6">
+</label>
+
+</div>
+
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
