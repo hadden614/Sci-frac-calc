@@ -1,134 +1,167 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>iPhone Scientific Calculator</title>
-<link rel="stylesheet" href="styles.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Scientific Fraction Calc</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
-
 <body>
-<div class="app">
+  <header class="topbar">
+    <div class="brand">
+      <div class="title">Scientific Calc</div>
+      <div class="badges">
+        <span id="angleBadge" class="badge">DEG</span>
+        <span id="fracBadge" class="badge">FRAC OFF</span>
+        <span id="tradeBadge" class="badge">TRADE OFF</span>
+      </div>
+    </div>
+    <button id="settingsBtn" class="iconbtn" aria-label="Settings">⚙️</button>
+  </header>
 
-<header class="display">
-    <div id="expression" class="expression"></div>
-    <div id="result" class="result">0</div>
-</header>
+  <main class="app">
+    <section class="display">
+      <div id="exprLine" class="expr"></div>
+      <div id="resultLine" class="result">0</div>
+      <div id="auxLine" class="aux"></div>
+    </section>
 
-<section class="controls">
+    <section class="panel">
+      <div class="row5">
+        <button class="btn secondary" data-action="mc">MC</button>
+        <button class="btn secondary" data-action="mr">MR</button>
+        <button class="btn secondary" data-action="mplus">M+</button>
+        <button class="btn secondary" data-action="mminus">M-</button>
+        <button class="btn secondary" data-action="back">⌫</button>
+      </div>
 
-<div class="row small">
-<button id="ac">AC</button>
-<button id="ce">CE</button>
-<button id="back">⌫</button>
-<button id="settingsBtn">⚙</button>
-</div>
+      <div class="row4">
+        <button class="btn danger" data-action="ac">AC</button>
+        <button class="btn secondary" data-action="ce">CE</button>
+        <button class="btn secondary" data-action="degRad">DEG/RAD</button>
+        <button class="btn secondary" data-action="fracBtn">FRAC</button>
+      </div>
 
-<div class="row small">
-<button class="func">sin</button>
-<button class="func">cos</button>
-<button class="func">tan</button>
-<button id="degRad">DEG</button>
-</div>
+      <div class="grid" aria-label="Keypad">
+        <button class="btn secondary" data-insert="sin(">sin</button>
+        <button class="btn secondary" data-insert="cos(">cos</button>
+        <button class="btn secondary" data-insert="tan(">tan</button>
+        <button class="btn secondary" data-insert="log(">log</button>
 
-<div class="row small">
-<button class="func">log</button>
-<button class="func">ln</button>
-<button class="func">√</button>
-<button id="fracBtn">FRAC</button>
-</div>
+        <button class="btn secondary" data-insert="ln(">ln</button>
+        <button class="btn secondary" data-insert="sqrt(">√</button>
+        <button class="btn secondary" data-insert="sqr(">x²</button>
+        <button class="btn secondary" data-insert="^">xʸ</button>
 
-<div class="row">
-<button>(</button>
-<button>)</button>
-<button>π</button>
-<button>e</button>
-</div>
+        <button class="btn secondary" data-insert="π">π</button>
+        <button class="btn secondary" data-insert="e">e</button>
+        <button class="btn secondary" data-insert="(">(</button>
+        <button class="btn secondary" data-insert=")">)</button>
 
-<div class="row">
-<button>7</button>
-<button>8</button>
-<button>9</button>
-<button class="op">÷</button>
-</div>
+        <button class="btn" data-insert="7">7</button>
+        <button class="btn" data-insert="8">8</button>
+        <button class="btn" data-insert="9">9</button>
+        <button class="btn op" data-insert="÷">÷</button>
 
-<div class="row">
-<button>4</button>
-<button>5</button>
-<button>6</button>
-<button class="op">×</button>
-</div>
+        <button class="btn" data-insert="4">4</button>
+        <button class="btn" data-insert="5">5</button>
+        <button class="btn" data-insert="6">6</button>
+        <button class="btn op" data-insert="×">×</button>
 
-<div class="row">
-<button>1</button>
-<button>2</button>
-<button>3</button>
-<button class="op">-</button>
-</div>
+        <button class="btn" data-insert="1">1</button>
+        <button class="btn" data-insert="2">2</button>
+        <button class="btn" data-insert="3">3</button>
+        <button class="btn op" data-insert="-">-</button>
 
-<div class="row">
-<button>0</button>
-<button>.</button>
-<button class="op">%</button>
-<button class="op">+</button>
-</div>
+        <button class="btn" data-insert="0">0</button>
+        <button class="btn" data-insert=".">.</button>
+        <button class="btn" data-insert="%">%</button>
+        <button class="btn op" data-insert="+">+</button>
 
-<div class="row">
-<button id="equals" class="equals">=</button>
-</div>
+        <button class="btn wide" data-action="equals">=</button>
+      </div>
+    </section>
 
-</section>
+    <section class="history">
+      <div class="historyHead">
+        <div>History (20)</div>
+        <button id="clearHistoryBtn" class="textbtn" type="button">Clear</button>
+      </div>
+      <ul id="historyList" class="historyList"></ul>
+    </section>
+  </main>
 
-<section id="history" class="history"></section>
+  <aside id="drawer" class="drawer" aria-hidden="true">
+    <div class="drawerTop">
+      <div class="drawerTitle">Settings</div>
+      <button id="closeDrawerBtn" class="iconbtn" aria-label="Close">✕</button>
+    </div>
 
-<div id="drawer" class="drawer">
-<h3>Settings</h3>
+    <div class="drawerBody">
+      <div class="setting">
+        <div class="labelRow">
+          <span>Angle</span>
+          <button id="anglePill" class="pill" type="button">DEG</button>
+        </div>
+      </div>
 
-<label>Angle Mode
-<select id="angleMode">
-<option value="DEG">DEG</option>
-<option value="RAD">RAD</option>
-</select>
-</label>
+      <div class="setting">
+        <div class="labelRow">
+          <span>Fraction Mode</span>
+          <input id="fractionMode" type="checkbox" />
+        </div>
 
-<label>Fraction Mode
-<input type="checkbox" id="fractionMode">
-</label>
+        <div class="subsetting">
+          <label>Max Denominator
+            <select id="maxDenom">
+              <option>2</option><option>4</option><option>8</option><option selected>16</option>
+              <option>32</option><option>64</option><option>128</option>
+            </select>
+          </label>
+        </div>
 
-<label>Max Denominator
-<select id="maxDen">
-<option>2</option>
-<option>4</option>
-<option>8</option>
-<option selected>16</option>
-<option>32</option>
-<option>64</option>
-<option>128</option>
-</select>
-</label>
+        <div class="subsetting">
+          <div class="labelRow">
+            <span>Accept “1-3/8”</span>
+            <input id="hyphenMixed" type="checkbox" />
+          </div>
+        </div>
+      </div>
 
-<label>Trade Rounding
-<input type="checkbox" id="tradeMode">
-</label>
+      <div class="setting">
+        <div class="labelRow">
+          <span>Trade Rounding</span>
+          <input id="tradeMode" type="checkbox" />
+        </div>
+        <div class="subsetting">
+          <label>Step
+            <select id="tradeStep">
+              <option value="2">1/2</option>
+              <option value="4">1/4</option>
+              <option value="8">1/8</option>
+              <option value="16" selected>1/16</option>
+              <option value="32">1/32</option>
+            </select>
+          </label>
+        </div>
+      </div>
 
-<label>Step
-<select id="tradeStep">
-<option>1/2</option>
-<option>1/4</option>
-<option>1/8</option>
-<option selected>1/16</option>
-<option>1/32</option>
-</select>
-</label>
+      <div class="setting">
+        <label>Decimal Precision (2–10)
+          <input id="precision" type="range" min="2" max="10" value="6" />
+          <div class="hint"><span id="precisionVal">6</span> digits</div>
+        </label>
+      </div>
 
-<label>Decimal Precision
-<input type="number" id="precision" min="2" max="10" value="6">
-</label>
+      <div class="setting">
+        <div class="hint">
+          Keyboard: digits, + - * / ( ) ^, Enter (=), Backspace, Esc (AC), Delete (CE).
+        </div>
+      </div>
+    </div>
+  </aside>
 
-</div>
-
-</div>
-
-<script src="app.js"></script>
+  <div id="scrim" class="scrim" hidden></div>
+  <script src="app.js"></script>
 </body>
 </html>
